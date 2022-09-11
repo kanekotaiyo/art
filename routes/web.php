@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', 'UserController@top');
-Route::get('/mypage', 'UserController@mypage');
-Route::get('/myreserve', 'UserController@myreserve');
-Route::get('/allreserve', 'UserController@allreserve');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/', 'UserController@top');
+    Route::get('/mypage', 'UserController@mypage');
+    Route::get('/myreserve', 'UserController@myreserve');
+    Route::get('/allreserve', 'UserController@allreserve');
+});
 
 Auth::routes();
 
