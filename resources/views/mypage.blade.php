@@ -11,6 +11,9 @@
     </head>
     <body>
         <h1>マイページ画面</h1>
+        <h2>名前：{{$user->name}}</h2>
+        <h2>車の特徴：{{$user->car}}</h2>
+        <h2>コメント：{{$user->comment}}</h2>
     </body>
 </html>
 @endsection
