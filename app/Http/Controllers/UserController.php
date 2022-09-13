@@ -19,10 +19,7 @@ class UserController extends Controller
         //dd($user_info);
         return view('mypage')->with(['user' => $user_info]);
     }
-    public function myreserve()
-    {
-        return view('myreserve');
-    }
+    
     public function allreserve()
     {
         return view('allreserve');

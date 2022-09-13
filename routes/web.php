@@ -14,7 +14,10 @@
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', 'UserController@top');
     Route::get('/mypage', 'UserController@mypage');
-    Route::get('/myreserve', 'UserController@myreserve');
+    Route::get('/myreserve', 'ReserveController@myreserve');
+    Route::get('/myreserve/{reserve}', 'ReserveController@show');
+    Route::get('/create', 'ReserveController@create');
+    Route::post('/store', 'ReserveController@store');
     Route::get('/allreserve', 'UserController@allreserve');
 });
 

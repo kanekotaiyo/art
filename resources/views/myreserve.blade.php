@@ -5,13 +5,27 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>myreserve</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
         <h1>予約状況画面</h1>
-        
+        [<a href='/create'>新しく予約する</a>]
+        <div class='reserves'>
+            @foreach ($reserves as $reserve)
+                <div class='reserve'>
+                    <h2 class='plase'>{{ $reserve->startplase }}から{{ $reserve->endplase }}</h2>
+                    <h2 class='time'>{{ $reserve->time }}</h2>
+                    <h2 class='title'>
+                        <a href="/myreserve/{{ $reserve->id }}">マッチング状況</a>
+                    </h2>
+                </div>
+            @endforeach
+        </div>
+        <div class='paginate'>
+            {{ $reserves->links() }}
+        </div>
     </body>
 </html>
 @endsection
