@@ -17,7 +17,12 @@
             </div>
             <div class="time">
                 <h2>時間</h2>
-                <input type="text" name="reserve[time]" />
+                <label for="meeting-time">Choose a time for your appointment:</label>
+
+                <input type="datetime-local" id="time"
+                    name="reserve[time]" value="{{ \Carbon\Carbon::now() }}"
+                    min="{{ \Carbon\Carbon::now() }}" max="2300-12-31T00:00">
+
             </div>
             <input type="submit" value="保存"/>
         </form>
