@@ -20,8 +20,8 @@
                 <label for="meeting-time">Choose a time for your appointment:</label>
 
                 <input type="datetime-local" id="time"
-                    name="reserve[time]" value="{{ \Carbon\Carbon::now() }}"
-                    min="{{ \Carbon\Carbon::now() }}" max="2300-12-31T00:00">
+                    name="reserve[time]" value="{{ \Carbon\Carbon::today() }}"
+                    min="{{ \Carbon\Carbon::today() }}" max="2300-12-31T00:00">
 
             </div>
             <input type="submit" value="保存"/>

@@ -28,4 +28,9 @@ class ReserveController extends Controller
         $reserve->fill($input)->save();
         return redirect('/myreserve/' . $reserve->id);
     }
+    public function allreserve(Reserve $reserve)
+    {
+        //dd($reserve->getPaginateByLimit2(Auth::id()));
+        return view('allreserve')->with(['reserves' => $reserve->getPaginateByLimit2(Auth::id())]);
+    }
 }
