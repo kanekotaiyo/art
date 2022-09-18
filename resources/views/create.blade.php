@@ -26,7 +26,8 @@
             </div>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/myreserve">back</a>]</div>
+        <br>
+        <button type="button" onClick="history.back()">戻る</button>
     </body>
 </html>
 @endsection

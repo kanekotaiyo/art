@@ -41,9 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Reserve');  
     }
-    public function matches()
+    public function matchings()
     {
-        return $this->hasMany('App\Match');  
+        return $this->hasMany('App\Matching');  
     }
     public function reviewing()
     {

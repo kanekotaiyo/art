@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="footer">
-            <a href="/myreserve">戻る</a>
+            <button type="button" onClick="history.back()">戻る</button>
         </div>
     </body>
 </html>
