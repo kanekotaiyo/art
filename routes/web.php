@@ -20,6 +20,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/create', 'ReserveController@create');
     Route::post('/store', 'ReserveController@store');
     Route::get('/allreserve', 'ReserveController@allreserve');
+    Route::get('/matchlist', 'MatchingController@matchlist');
+    Route::get('/matching/{reserve}', 'MatchingController@matching');
     
 });
 

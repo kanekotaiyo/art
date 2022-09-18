@@ -14,6 +14,9 @@
         <h2>名前：{{$user->name}}</h2>
         <h2>車の特徴：{{$user->car}}</h2>
         <h2>コメント：{{$user->comment}}</h2>
+        <div class="footer">
+            <button type="button" onClick="history.back()">戻る</button>
+        </div>
     </body>
 </html>
 @endsection

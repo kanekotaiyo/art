@@ -20,6 +20,7 @@
                     <h2 class='title'>
                         <a href="/myreserve/{{ $reserve->id }}">マッチング状況</a>
                     </h2>
+                    <br>
                 </div>
             @endforeach
         </div>
