@@ -21,11 +21,11 @@
                     <h2 class='title'>
                         <a href="/myreserve/{{ $reserve->id }}">マッチング状況</a>
                     </h2>
-                    {{--<form action="/myreserve/{{ $reserve->id }}" id="form_{{ $reserve->id }}" method="post" style="display:inline">
+                    <form action="/myreserve/{{ $reserve->id }}" id="form_{{ $reserve->id }}" method="post" style="display:inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit">delete</button> 
-                    </form>--}}
+                    </form>
                 </div>
             @endforeach
         </div>

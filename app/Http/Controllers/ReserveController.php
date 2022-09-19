@@ -12,15 +12,12 @@ class ReserveController extends Controller
     {
         return view('myreserve')->with(['reserves' => $reserve->getPaginateByLimitMyreserve(Auth::id())]);
     }
+    
     public function create()
     {
         return view('create');
     }
-    public function delete(Reserve $reserve)
-    {
-        $reserve->delete();
-        return redirect('/myreserve');
-    }
+  
     public function store(Request $request, Reserve $reserve)
     {
         $input = $request['reserve'];
@@ -28,6 +25,7 @@ class ReserveController extends Controller
         $reserve->fill($input)->save();
         return redirect('/myreserve/' . $reserve->id);
     }
+    
     public function allreserve(Reserve $reserve)
     {
         //dd($reserve->getPaginateByLimit2(Auth::id()));

@@ -37,4 +37,12 @@ class MatchingController extends Controller
         //dd($reserve_id);
         return view('show')->with(['matchings' => $matching->getPaginateByLimitShow($reserve_id), 'reserve' => $reserve]);
     }
+    public function delete(Reserve $reserve, Matching $matching)
+    {
+        $de_matching=$matching->where('reserve_id',$reserve->id);
+        $de_matching->delete();
+        //dd($de_matching);
+        $reserve->delete();
+        return redirect('/myreserve');
+    }
 }
