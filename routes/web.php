@@ -19,7 +19,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/allpage/{user}', 'UserController@allpage');
     Route::get('/myreserve', 'ReserveController@myreserve');
     Route::get('/myreserve/{reserve}', 'MatchingController@show');
-    //Route::delete('/myreserve/{reserve}', 'ReserveController@delete');
+    Route::delete('/myreserve/{reserve}', 'MatchingController@delete');
     Route::get('/create', 'ReserveController@create');
     Route::post('/store', 'ReserveController@store');
     Route::get('/allreserve', 'ReserveController@allreserve');

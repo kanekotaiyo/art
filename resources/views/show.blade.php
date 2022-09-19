@@ -33,7 +33,7 @@
                 </div>
             @endforeach
         <div class="footer">
-            <button type="button" onClick="history.back()">戻る</button>
+            <a href="/myreserve">[予約状況画面へ]</a>
         </div>
     </body>
 </html>
