@@ -19,9 +19,14 @@ class Matching extends Model
     {
         return $this->belongsTo('App\Reserve');
     }
-    public function getPaginateByLimit(int $user_id,int $limit_count = 10)
+    public function getPaginateByLimitMatchlist(int $user_id,int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    public function getPaginateByLimitShow(int $reserve_id,int $limit_count = 10)
+    {
+        // updated_atで降順に並べたあと、limitで件数制限をかける
+        return $this->where('reserve_id', $reserve_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

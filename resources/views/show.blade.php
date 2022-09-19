@@ -24,6 +24,14 @@
                 <p>{{ $reserve->time }}</p>    
             </div>
         </div>
+        <h2>マッチング申請一覧</h2>
+        @foreach ($matchings as $matching)
+                <div class='reserve'>
+                    <h2>{{ $matching->user->name }}</h2>
+                    <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                    <br>
+                </div>
+            @endforeach
         <div class="footer">
             <button type="button" onClick="history.back()">戻る</button>
         </div>

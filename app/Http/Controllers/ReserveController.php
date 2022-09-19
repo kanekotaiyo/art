@@ -10,16 +10,16 @@ class ReserveController extends Controller
 {
     public function myreserve(Reserve $reserve)
     {
-        return view('myreserve')->with(['reserves' => $reserve->getPaginateByLimit(Auth::id())]);
-    }
-    public function show(Reserve $reserve)
-    {
-        //dd($reserve);
-        return view('show')->with(['reserve' => $reserve]);
+        return view('myreserve')->with(['reserves' => $reserve->getPaginateByLimitMyreserve(Auth::id())]);
     }
     public function create()
     {
         return view('create');
+    }
+    public function delete(Reserve $reserve)
+    {
+        $reserve->delete();
+        return redirect('/myreserve');
     }
     public function store(Request $request, Reserve $reserve)
     {
@@ -31,6 +31,6 @@ class ReserveController extends Controller
     public function allreserve(Reserve $reserve)
     {
         //dd($reserve->getPaginateByLimit2(Auth::id()));
-        return view('allreserve')->with(['reserves' => $reserve->getPaginateByLimit2(Auth::id())]);
+        return view('allreserve')->with(['reserves' => $reserve->getPaginateByLimitAllreserve(Auth::id())]);
     }
 }
