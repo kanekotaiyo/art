@@ -12,6 +12,7 @@ class UserController extends Controller
     {
         return view('top');
     }
+    
     public function mypage(User $user)
     {
         $user_id = Auth::id();
@@ -19,6 +20,20 @@ class UserController extends Controller
         //dd($user_info);
         return view('mypage')->with(['user' => $user_info]);
     }
+    
+    public function edit(User $user)
+    {
+        return view('edit')->with(['user' => $user]);
+    }
+    
+    public function update(Request $request, User $user)
+    {
+        //dd($user);
+        $input_user = $request['user'];
+        $user->fill($input_user)->save();
+        return redirect('/mypage');
+    }
+    
     public function allpage(User $user)
     {
         return view('allpage')->with(['user' => $user]);

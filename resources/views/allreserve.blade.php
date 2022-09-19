@@ -11,7 +11,7 @@
     </head>
     <body>
         <h1>みんなの予約</h1>
-        <h2><a href="/matchlist">マッチング申請リスト</h2></a>
+        <h2><a href="/matchlist">マッチング申請リスト</a></h2>
         <div class='reserves'>
             @foreach ($reserves as $reserve)
                 <div class='reserve'>

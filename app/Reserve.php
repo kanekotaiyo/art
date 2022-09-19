@@ -20,12 +20,12 @@ class Reserve extends Model
     {
         return $this->hasMany('App\Matching');  
     }
-    public function getPaginateByLimit(int $user_id,int $limit_count = 10)
+    public function getPaginateByLimitMyreserve(int $user_id,int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
-    public function getPaginateByLimit2(int $user_id,int $limit_count = 10)
+    public function getPaginateByLimitAllreserve(int $user_id,int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->where('user_id','<>',$user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
