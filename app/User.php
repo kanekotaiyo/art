@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -41,14 +43,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Reserve');  
     }
+    
     public function matchings()
     {
         return $this->hasMany('App\Matching');  
     }
+    
     public function reviewing()
     {
         return $this->hasMany('App\Review','reviewing_id');  
     }
+    
     public function reviewed()
     {
         return $this->hasMany('App\Review','reviewed_id');  
