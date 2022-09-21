@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/matchlist', 'MatchingController@matchlist');
     Route::delete('/matchlist/{matching}', 'MatchingController@delete_matching');
     Route::get('/matching/{reserve}', 'MatchingController@matching');
-    
+    Route::get('/confirm/{matching}', 'MatchingController@matching_confirm');
 });
 
 Auth::routes();
