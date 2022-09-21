@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reserve extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
     
     protected $fillable = [
         'startplase',

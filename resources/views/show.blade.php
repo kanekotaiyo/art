@@ -29,9 +29,10 @@
                 <div class='reserve'>
                     <h2>{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                    <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
                     <br>
                 </div>
-            @endforeach
+        @endforeach
         <div class="footer">
             <a href="/myreserve">[予約状況画面へ]</a>
         </div>
