@@ -25,14 +25,38 @@
             </div>
         </div>
         <h2>マッチング申請一覧</h2>
-        @foreach ($matchings as $matching)
+        <div class='reserve_confirm'>
+            @foreach ($matchings as $matching)
+            <div class='reserve'>
+                @if($matching->confirmed ===1)
+                    <h2>[マッチング成立]</h2>
+                    <h2>{{ $matching->user->name }}</h2>
+                    <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                    </form>
+                    <br>
+                @endif
+            @endforeach
+            <div class='reserve_wait'>
+            @foreach ($matchings as $matching)
+            <div class='reserve'>
+                @if($matching->confirmed ===0)
+                    <h2>{{ $matching->user->name }}</h2>
+                    <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                    <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
+                    </form>
+                    <br>
+                @endif
+            @endforeach
+        </div>
+        <br>
+            {{--@foreach ($matchings as $matching)
                 <div class='reserve'>
                     <h2>{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
                     <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
                     <br>
                 </div>
-        @endforeach
+            @endforeach--}}
         <div class="footer">
             <a href="/myreserve">[予約状況画面へ]</a>
         </div>
