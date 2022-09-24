@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Matching extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
     
     protected $fillable = [
         'reserve_id',
@@ -27,8 +27,14 @@ class Matching extends Model
     
     public function getPaginateByLimitMatchlist(int $user_id,int $limit_count = 10)
     {
-        // updated_atで降順に並べたあと、limitで件数制限をかける
+        $today = date("Y-m-d H:i:s");
         return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        /*if($this->confirmed ===1){
+            return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        }else{
+            return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        }*/
+        
     }
     
     public function getPaginateByLimitShow(int $reserve_id,int $limit_count = 10)
