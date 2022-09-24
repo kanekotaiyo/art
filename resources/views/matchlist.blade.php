@@ -19,7 +19,7 @@
                     <h2 class='name'>ユーザー名：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
                     <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
                     <h2 class='time'>{{ $matching->reserve->time }}</h2>
-                    <h2 class='name'><a href="">チャット画面</a></h2>
+                    <h2 class='chat'><a href="">チャット画面</a></h2>
                     </form>
                     <br>
                 @endif

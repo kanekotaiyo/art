@@ -30,18 +30,22 @@ class Reserve extends Model
     public function getPaginateByLimitMyreserve(int $user_id,int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        $yesterday = date("Y-m-d H:i:s",strtotime('-1 Hour'));
+        //dd($yesterday);
+        return $this->where('time','>',$yesterday)->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     public function getPaginateByLimitAllreserve(int $user_id,int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        $matched=Matching::where("confirmed",'=',1)->get(["reserve_id"]);
+        $matched_reserve=Matching::where("confirmed",'=',1)->get(["reserve_id"]);
         $array=[];
-        foreach($matched as $match){
-            array_push($array,$match->reserve_id);
+        foreach($matched_reserve as $match_reserve){
+            array_push($array,$match_reserve->reserve_id);
         }
         //dd($array);
-        return $this->whereNotIn('id',$array)->where('user_id','<>',$user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        $today = date("Y-m-d H:i:s");
+        //dd($today);
+        return $this->whereNotIn('id',$array)->where('time','>',$today)->where('user_id','<>',$user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

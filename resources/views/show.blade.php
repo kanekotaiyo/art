@@ -32,6 +32,7 @@
                     <h2>[マッチング成立]</h2>
                     <h2>{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                    <h2 class='chat'><a href="">チャット画面</a></h2>
                     </form>
                     <br>
                 @endif
