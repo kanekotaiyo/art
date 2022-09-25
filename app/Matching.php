@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class Matching extends Model
 {
@@ -27,12 +29,17 @@ class Matching extends Model
     
     public function getPaginateByLimitMatchlist(int $user_id,int $limit_count = 10)
     {
-        $today = date("Y-m-d H:i:s");
-        return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
-        /*if($this->confirmed ===1){
-            return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
-        }else{
-            return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        //$today = date("Y-m-d H:i:s");
+        $yesterday = date("Y-m-d H:i:s",strtotime('-1 day'));
+        //return $this->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        //if($this->confirmed ===1){
+            return $this->whereHas('reserve',function($query) use($yesterday){
+                $query->where('time','>',$yesterday);
+            })->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        /*}else{
+            return $this->whereHas('reserve',function($query) use($today){
+                $query->where('time','>',$today);
+            })->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
         }*/
         
     }
