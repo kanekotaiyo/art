@@ -30,7 +30,7 @@ class Reserve extends Model
     public function getPaginateByLimitMyreserve(int $user_id,int $limit_count = 10)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        $yesterday = date("Y-m-d H:i:s",strtotime('-1 Hour'));
+        $yesterday = date("Y-m-d H:i:s",strtotime('-1 day'));
         //dd($yesterday);
         return $this->where('time','>',$yesterday)->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
