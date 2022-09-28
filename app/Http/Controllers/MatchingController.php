@@ -26,7 +26,7 @@ class MatchingController extends Controller
         return redirect('/matchlist');
     }
     
-     public function matchlist(Matching $matching)
+    public function matchlist(Matching $matching)
     {
         /*$is_matching=$matching->where('confirmed', 1)->select('reserve_id')->get();
         //dd($is_matching);
@@ -74,4 +74,13 @@ class MatchingController extends Controller
         return redirect('/matchlist');
     }
     
+    public function chat(Matching $matching)
+    {
+        $matching_id=$matching->id;
+        //dd($matching);
+        //dd($reserve_id);
+        //$user_id=Auth::id();
+        
+        return view('chat')->with(['matching' => $matching]);
+    }
 }

@@ -30,9 +30,9 @@
             <div class='reserve'>
                 @if($matching->confirmed ===1)
                     <h2>[マッチング成立]</h2>
-                    <h2>{{ $matching->user->name }}</h2>
+                    <h2>送迎者：{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
-                    <h2 class='chat'><a href="">チャット画面</a></h2>
+                    <h2 class='chat'><a href="/chat/{{ $matching->id }}">チャット画面</a></h2>
                     </form>
                     <br>
                 @endif
@@ -41,7 +41,7 @@
             @foreach ($matchings as $matching)
             <div class='reserve'>
                 @if($matching->confirmed ===0)
-                    <h2>{{ $matching->user->name }}</h2>
+                    <h2>送迎者：{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
                     <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
                     </form>
