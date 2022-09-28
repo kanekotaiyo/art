@@ -58,4 +58,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Review','reviewed_id');  
     }
+    
+    public function to()
+    {
+        return $this->hasMany('App\Chat','to_id');  
+    }
+    
+    public function from()
+    {
+        return $this->hasMany('App\Chat','from_id');  
+    }
 }

@@ -16,10 +16,10 @@
             @foreach ($matchings as $matching)
             <div class='reserve'>
                 @if($matching->confirmed ===1)
-                    <h2 class='name'>ユーザー名：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
+                    <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
                     <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
                     <h2 class='time'>{{ $matching->reserve->time }}</h2>
-                    <h2 class='chat'><a href="">チャット画面</a></h2>
+                    <h2 class='chat'><a href="/chat/{{ $matching->id }}">チャット画面</a></h2>
                     </form>
                     <br>
                 @endif
@@ -29,7 +29,7 @@
             @foreach ($matchings as $matching)
             <div class='reserve'>
                 @if($matching->confirmed ===0)
-                    <h2 class='name'>ユーザー名：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
+                    <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
                     <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
                     <h2 class='time'>{{ $matching->reserve->time }}</h2>
                     <form action="/matchlist/{{ $matching->id }}" id="form_{{ $matching->id }}" method="post" style="display:inline">

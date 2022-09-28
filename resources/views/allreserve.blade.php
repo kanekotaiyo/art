@@ -15,7 +15,7 @@
         <div class='reserves'>
             @foreach ($reserves as $reserve)
                 <div class='reserve'>
-                    <h2 class='name'><a href="/allpage/{{ $reserve->user->id }}">{{ $reserve->user->name }}</a></h2>
+                    <h2 class='name'>予約者：<a href="/allpage/{{ $reserve->user->id }}">{{ $reserve->user->name }}</a></h2>
                     <h2 class='plase'>{{ $reserve->startplase }}から{{ $reserve->endplase }}</h2>
                     <h2 class='time'>{{ $reserve->time }}</h2>
                     <h2 class='title'>
