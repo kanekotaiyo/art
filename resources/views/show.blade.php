@@ -24,7 +24,7 @@
                 <p>{{ $reserve->time }}</p>    
             </div>
         </div>
-        <h2>マッチング申請一覧</h2>
+        <h2>マッチング状況一覧</h2>
         <div class='reserve_confirm'>
             @foreach ($matchings as $matching)
             <div class='reserve'>
@@ -38,26 +38,21 @@
                 @endif
             @endforeach
             <div class='reserve_wait'>
-            @foreach ($matchings as $matching)
-            <div class='reserve'>
-                @if($matching->confirmed ===0)
-                    <h2>送迎者：{{ $matching->user->name }}</h2>
-                    <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
-                    <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
-                    </form>
-                    <br>
-                @endif
-            @endforeach
-        </div>
-        <br>
-            {{--@foreach ($matchings as $matching)
+            @if($reserve->time >= $today)
+                @foreach ($matchings as $matching)
                 <div class='reserve'>
-                    <h2>{{ $matching->user->name }}</h2>
-                    <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
-                    <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
-                    <br>
-                </div>
-            @endforeach--}}
+                    @if($matching->confirmed ===0)
+                        <h2>送迎者：{{ $matching->user->name }}</h2>
+                        <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                        <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
+                        </form>
+                        <br>
+                    @endif
+                @endforeach
+            {{--@else
+                <h2>予約時刻は過ぎていますのでマッチできません</h2>--}}
+            @endif
+        </div>
         <div class="footer">
             <a href="/myreserve">[予約状況画面へ]</a>
         </div>
