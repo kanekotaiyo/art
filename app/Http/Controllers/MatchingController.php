@@ -41,11 +41,12 @@ class MatchingController extends Controller
     public function show(Reserve $reserve, Matching $matching)
     {
         //dd($matching->get());
+        $today = date("Y-m-d H:i:s");
         $reserve_id=$reserve->id;
         //dd($reserve_id);
         //$user_id=Auth::id();
         
-        return view('show')->with(['matchings' => $matching->getPaginateByLimitShow($reserve_id), 'reserve' => $reserve]);
+        return view('show')->with(['matchings' => $matching->getPaginateByLimitShow($reserve_id), 'reserve' => $reserve, 'today' => $today]);
     }
     
     public function matching_confirm(Reserve $reserve, Matching $matching)
