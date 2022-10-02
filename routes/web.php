@@ -27,7 +27,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/matchlist/{matching}', 'MatchingController@delete_matching');
     Route::get('/matching/{reserve}', 'MatchingController@matching');
     Route::get('/confirm/{matching}', 'MatchingController@matching_confirm');
-    Route::get('/chat/{matching}', 'MatchingController@chat');
+    Route::get('/reservechat/{matching}', 'ChatController@reservechat');
+    Route::post('/reservemessage/{matching}', 'ChatController@reservemessage');
+    Route::get('/pickupchat/{matching}', 'ChatController@pickupchat');
+    Route::post('/pickupmessage/{matching}', 'ChatController@pickupmessage');
 });
 
 Auth::routes();

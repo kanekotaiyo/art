@@ -24,7 +24,7 @@
                 <p>{{ $reserve->time }}</p>    
             </div>
         </div>
-        <h2>マッチング状況一覧</h2>
+        <h2><マッチング状況一覧></h2>
         <div class='reserve_confirm'>
             @foreach ($matchings as $matching)
             <div class='reserve'>
@@ -32,7 +32,7 @@
                     <h2>[マッチング成立]</h2>
                     <h2>送迎者：{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
-                    <h2 class='chat'><a href="/chat/{{ $matching->id }}">チャット画面</a></h2>
+                    <h2 class='chat'><a href="/reservechat/{{ $matching->id }}">チャット画面</a></h2>
                     </form>
                     <br>
                 @endif
@@ -49,8 +49,8 @@
                         <br>
                     @endif
                 @endforeach
-            {{--@else
-                <h2>予約時刻は過ぎていますのでマッチできません</h2>--}}
+            @else
+                <h2>予約時刻は過ぎていますのでマッチングが確定しているもの以外表示できません</h2>
             @endif
         </div>
         <div class="footer">

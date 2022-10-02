@@ -27,6 +27,10 @@ class Matching extends Model
         return $this->belongsTo('App\Reserve');
     }
     
+    public function chats()
+    {
+        return $this->hasMany('App\Chat');  
+    }
     public function getPaginateByLimitMatchlist(int $user_id,int $limit_count = 10)
     {
         //$today = date("Y-m-d H:i:s");
