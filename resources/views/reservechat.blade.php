@@ -15,9 +15,25 @@
         <h2 class='name'>送迎者：<a href="/allpage/{{ $matching->user->id }}">{{ $matching->user->name }}</a></h2>
         <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
         <h2 class='time'>{{ $matching->reserve->time }}</h2>
-        
+        <div class='chat'>
+            @foreach ($chats as $chat)
+                <br>
+                <div class='chatscreen'>
+                    {{--<h3>{{ $chat->from->name }}</h3>--}}
+                    <h2 class='message'>{{ $chat->message }}</h2>
+                </div>
+            @endforeach
+        </div>
+        <form action="/reservemessage/{{ $matching->id }}" method="POST">
+            @csrf
+            <div class="message">
+                <input type="text" name="chat[message]" />
+            </div>
+            <input type="submit" value="送信"/>
+        </form>
+        <br>
         <div class="footer">
-            <button type="button" onClick="history.back()">戻る</button>
+            <a href="/myreserve/{{ $matching->reserve->id }}">[マッチング状況一覧へ]</a>
         </div>
     </body>
 </html>

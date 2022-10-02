@@ -75,13 +75,5 @@ class MatchingController extends Controller
         return redirect('/matchlist');
     }
     
-    public function chat(Matching $matching)
-    {
-        $matching_id=$matching->id;
-        //dd($matching);
-        //dd($reserve_id);
-        //$user_id=Auth::id();
-        
-        return view('chat')->with(['matching' => $matching]);
-    }
+    
 }
