@@ -16,14 +16,15 @@ class MatchingController extends Controller
         //dd($is_matching);
         if(isset($is_matching)){
             return redirect('/matchlist');
+        }else{
+            $input=[
+                'reserve_id'=>$reserve->id,
+                'user_id'=>Auth::id(),
+                'confirmed'=>0,
+            ];
+            $matching->fill($input)->save();
+            return redirect('/matchlist');
         }
-        $input=[
-            'reserve_id'=>$reserve->id,
-            'user_id'=>Auth::id(),
-            'confirmed'=>0,
-        ];
-        $matching->fill($input)->save();
-        return redirect('/matchlist');
     }
     
     public function matchlist(Matching $matching)
@@ -44,9 +45,12 @@ class MatchingController extends Controller
         $today = date("Y-m-d H:i:s");
         $reserve_id=$reserve->id;
         //dd($reserve_id);
-        //$user_id=Auth::id();
-        
-        return view('show')->with(['matchings' => $matching->getPaginateByLimitShow($reserve_id), 'reserve' => $reserve, 'today' => $today]);
+        $user_id=Auth::id();
+        if ($reserve->user_id==$user_id){
+            return view('show')->with(['matchings' => $matching->getPaginateByLimitShow($reserve_id), 'reserve' => $reserve, 'today' => $today]);
+        }else{
+            return redirect('/myreserve');
+        }
     }
     
     public function matching_confirm(Reserve $reserve, Matching $matching)
