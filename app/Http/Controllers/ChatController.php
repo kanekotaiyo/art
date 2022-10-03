@@ -14,8 +14,12 @@ class ChatController extends Controller
         $matching_id=$matching->id;
         //dd($matching);
         //dd($reserve_id);
-        //$user_id=Auth::id();
-        return view('reservechat')->with(['matching' => $matching, 'chats' => $chat->getPaginateByLimitChat($matching_id)]);
+        $user_id=Auth::id();
+        if ($matching->reserve->user_id==$user_id){
+            return view('reservechat')->with(['matching' => $matching, 'chats' => $chat->getPaginateByLimitChat($matching_id)]);
+        }else{
+            return redirect('/myreserve');
+        }
     }
     public function reservemessage(Request $request, Chat $chat, Matching $matching)
     {
@@ -32,8 +36,12 @@ class ChatController extends Controller
         $matching_id=$matching->id;
         //dd($matching);
         //dd($reserve_id);
-        //$user_id=Auth::id();
-        return view('pickupchat')->with(['matching' => $matching, 'chats' => $chat->getPaginateByLimitChat($matching_id)]);
+        $user_id=Auth::id();
+        if ($matching->user_id==$user_id){
+            return view('pickupchat')->with(['matching' => $matching, 'chats' => $chat->getPaginateByLimitChat($matching_id)]);
+        }else{
+            return redirect('/matchlist');
+        }
     }
     public function pickupmessage(Request $request, Chat $chat, Matching $matching)
     {
