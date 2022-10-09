@@ -31,6 +31,12 @@ class Matching extends Model
     {
         return $this->hasMany('App\Chat');  
     }
+    
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');  
+    }
+    
     public function getPaginateByLimitMatchlist(int $user_id,int $limit_count = 10)
     {
         //$today = date("Y-m-d H:i:s");
