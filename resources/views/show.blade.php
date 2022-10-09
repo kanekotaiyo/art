@@ -33,7 +33,10 @@
                     <h2>送迎者：{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
                     <h2 class='chat'><a href="/reservechat/{{ $matching->id }}">チャット画面</a></h2>
-                    </form>
+                    @if($reserve->time > $today && count($matching->reviews()->get())==0) {{--時間反対--}}
+                        <h2><a href="/review/{{$matching->id}}">レビューを書く</a></h2>
+                    @endif
+                    
                     <br>
                 @endif
             @endforeach
@@ -45,7 +48,6 @@
                         <h2>送迎者：{{ $matching->user->name }}</h2>
                         <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
                         <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
-                        </form>
                         <br>
                     @endif
                 @endforeach

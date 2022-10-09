@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Reserve;
 use App\Matching;
+use App\Review;
 use Illuminate\Support\Facades\Auth;
 
 class MatchingController extends Controller
@@ -41,6 +42,8 @@ class MatchingController extends Controller
     
     public function show(Reserve $reserve, Matching $matching)
     {
+        $a=Matching::find(22);
+        //dd(count($a->reviews()->get()));
         //dd($matching->get());
         $today = date("Y-m-d H:i:s");
         $reserve_id=$reserve->id;
