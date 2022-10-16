@@ -15,6 +15,7 @@ class Reserve extends Model
         'endplase',
         'time',
         'user_id',
+        'allfinish',
     ];
     
     public function user()
@@ -48,4 +49,10 @@ class Reserve extends Model
         //dd($today);
         return $this->whereNotIn('id',$array)->where('time','>',$today)->where('user_id','<>',$user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function getPaginateByLimitPastuse(int $user_id,int $limit_count = 10)
+    {
+        return $this->where('allfinish','=',1)->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
 }

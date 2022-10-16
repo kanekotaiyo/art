@@ -14,19 +14,21 @@
         [<a href='/create'>新しく予約する</a>]
         <div class='reserves'>
             @foreach ($reserves as $reserve)
-                <br>
-                <div class='reserve'>
-                    <h2 class='plase'>{{ $reserve->startplase }}から{{ $reserve->endplase }}</h2>
-                    <h2 class='time'>{{ $reserve->time }}</h2>
-                    <h2 class='title'>
-                        <a href="/myreserve/{{ $reserve->id }}">マッチング状況</a>
-                    </h2>
-                    <form action="/myreserve/{{ $reserve->id }}" id="form_{{ $reserve->id }}" method="post" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">delete</button> 
-                    </form>
-                </div>
+                @if ($reserve->allfinish!=1)
+                    <br>
+                    <div class='reserve'>
+                        <h2 class='plase'>{{ $reserve->startplase }}から{{ $reserve->endplase }}</h2>
+                        <h2 class='time'>{{ $reserve->time }}</h2>
+                        <h2 class='title'>
+                            <a href="/myreserve/{{ $reserve->id }}">マッチング状況</a>
+                        </h2>
+                        <form action="/myreserve/{{ $reserve->id }}" id="form_{{ $reserve->id }}" method="post" style="display:inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">delete</button> 
+                        </form>
+                    </div>
+                @endif
             @endforeach
         </div>
         <div class='paginate'>

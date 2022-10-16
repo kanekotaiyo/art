@@ -16,15 +16,15 @@
                 @csrf
                 @method('PUT')
                 <div class='name'>
-                    <h2></h2>
+                    <h2>名前</h2>
                     <input type='text' name='user[name]' value="{{ $user->name }}">
                 </div>
                 <div class='car'>
-                    <h2>本文</h2>
+                    <h2>車の特徴</h2>
                     <input type='text' name='user[car]' value="{{ $user->car }}">
                 </div>
                 <div class='comment'>
-                    <h2>本文</h2>
+                    <h2>コメント</h2>
                     <input type='text' name='user[comment]' value="{{ $user->comment }}">
                 </div>
                 <input type="submit" value="保存">

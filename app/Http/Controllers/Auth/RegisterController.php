@@ -40,7 +40,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'car' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255'],
+            'car_image_path' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -72,6 +73,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'car' => $data['car'],
             'comment' => $data['comment'],
+            'car_image_path' => $data['car_image_path'],
         ]);
     }
 }

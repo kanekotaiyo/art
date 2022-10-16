@@ -12,6 +12,7 @@
         <h1>レビュー画面</h1>
         <form action="/reviewing/{{$matching->id}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="review">
                 <h3>レビュー相手：{{$matching->user->name}}</h3>
                 <h3>評価</h3>

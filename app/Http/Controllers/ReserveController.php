@@ -22,6 +22,7 @@ class ReserveController extends Controller
     {
         $input = $request['reserve'];
         $input['user_id'] = Auth::id();
+        $input['allfinish'] = 0;
         $reserve->fill($input)->save();
         return redirect('/myreserve/' . $reserve->id);
     }
@@ -31,4 +32,15 @@ class ReserveController extends Controller
         //dd($reserve->getPaginateByLimit2(Auth::id()));
         return view('allreserve')->with(['reserves' => $reserve->getPaginateByLimitAllreserve(Auth::id())]);
     }
+    
+    public function past_use(Reserve $reserve)
+    {
+        //dd($reserve->matchings()->get());
+        $reserves=$reserve->getPaginateByLimitPastuse(Auth::id());
+        $reserves->load('matchings');
+        //dd($reserves);
+        return view('pastuse')->with(['reserves' => $reserves]);
+    }
+    
+    
 }
