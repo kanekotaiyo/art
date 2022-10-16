@@ -15,7 +15,7 @@
             <h2>[マッチング成立]</h2>
             @foreach ($matchings as $matching)
             <div class='reserve'>
-                @if($matching->confirmed ===1)
+                @if($matching->confirmed ===1 && $matching->reserve->allfinish!=1)
                     <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
                     <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
                     <h2 class='time'>{{ $matching->reserve->time }}</h2>

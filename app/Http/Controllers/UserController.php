@@ -38,4 +38,19 @@ class UserController extends Controller
     {
         return view('allpage')->with(['user' => $user]);
     }
+    
+    /*public function create_car_image(Request $request)
+    {
+        $user= new User;
+        $form = $request->all();
+
+        //s3アップロード開始
+        $car_image = $request->file('car_image');
+        // バケットの`myprefix`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('myprefix', $car_image, 'public');
+        // アップロードした画像のフルパスを取得
+        $user->car_image_path = Storage::disk('s3')->url($path);
+
+        $user->save();
+    }*/
 }

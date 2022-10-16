@@ -62,7 +62,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="car" class="col-md-4 col-form-label text-md-right">Car</label>
+                            <label for="car" class="col-md-4 col-form-label text-md-right">車の特徴</label>
 
                             <div class="col-md-6">
                                 <input id="car" type="text" class="form-control" name="car" required autocomplete="car">
@@ -70,12 +70,19 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="comment" class="col-md-4 col-form-label text-md-right">Comment</label>
+                            <label for="comment" class="col-md-4 col-form-label text-md-right">コメント</label>
 
                             <div class="col-md-6">
                                 <input id="comment" type="text" class="form-control" name="comment" required autocomplete="comment">
                             </div>
                         </div>
+                        
+                        {{--<form action="/create_car_image" method="post" enctype="multipart/form-data">
+                            <!-- アップロードフォームの作成 -->
+                            <input type="file" name="car_image">
+                                {{ csrf_field() }}
+                            <input type="submit" value="アップロード">
+                        </form>--}}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

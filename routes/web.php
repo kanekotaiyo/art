@@ -14,6 +14,8 @@
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', 'UserController@top');
     Route::get('/mypage', 'UserController@mypage');
+    Route::get('/past_use', 'ReserveController@past_use');
+    Route::get('/past_use_pickup', 'MatchingController@past_use_pickup');
     Route::get('/mypage/{user}/edit', 'UserController@edit');
     Route::put('/mypage/{user}', 'UserController@update');
     Route::get('/allpage/{user}', 'UserController@allpage');
@@ -32,7 +34,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/pickupchat/{matching}', 'ChatController@pickupchat');
     Route::post('/pickupmessage/{matching}', 'ChatController@pickupmessage');
     Route::get('/review/{matching}', 'ReviewController@review');
-    Route::post('/reviewing/{matching}', 'ReviewController@reviewing');
+    Route::put('/reviewing/{matching}', 'ReviewController@reviewing');
+    Route::post('/create_car_image', 'UserController@create_car_image');
 });
 
 Auth::routes();

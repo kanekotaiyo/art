@@ -42,7 +42,7 @@ class MatchingController extends Controller
     
     public function show(Reserve $reserve, Matching $matching)
     {
-        $a=Matching::find(22);
+        //$a=Matching::find(22);
         //dd(count($a->reviews()->get()));
         //dd($matching->get());
         $today = date("Y-m-d H:i:s");
@@ -82,5 +82,11 @@ class MatchingController extends Controller
         return redirect('/matchlist');
     }
     
+    public function past_use_pickup(Matching $matching)
+    {
+        //dd($reserve->matchings()->get());
+        //dd($reserves);
+        return view('pastpickup')->with(['matchings' => $matching->getPaginateByLimitPastPickup(Auth::id())]);
+    }
     
 }

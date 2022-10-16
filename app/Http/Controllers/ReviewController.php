@@ -23,6 +23,10 @@ class ReviewController extends Controller
         $input['matching_id'] = $matching->id;
         //dd($review)->get();
         $review->fill($input)->save();
+        
+        $input_reserve = $request['reserve'];
+        $input_reserve['allfinish']=1;
+        $matching->reserve->fill($input_reserve)->save();
         return redirect('/myreserve');
     }
 }
