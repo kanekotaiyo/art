@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}"　enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -76,13 +76,11 @@
                                 <input id="comment" type="text" class="form-control" name="comment" required autocomplete="comment">
                             </div>
                         </div>
-                        
-                        {{--<form action="/create_car_image" method="post" enctype="multipart/form-data">
-                            <!-- アップロードフォームの作成 -->
+                        <div>
+                            
+                            <label for="car_image" class="col-md-4 col-form-label text-md-right">車の写真</label>
                             <input type="file" name="car_image">
-                                {{ csrf_field() }}
-                            <input type="submit" value="アップロード">
-                        </form>--}}
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

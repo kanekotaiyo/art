@@ -15,6 +15,9 @@
         <h2>名前：{{$user->name}}</h2>
         <h2>車の特徴：{{$user->car}}</h2>
         <h2>コメント：{{$user->comment}}</h2>
+        @if ($user->car_image_path)
+            <img src="{{ $user->car_image_path }}">
+        @endif
         <h2><a href='/past_use'>過去のマッチング(予約者側)</a></h2>
         <h2><a href='/past_use_pickup'>過去のマッチング(送迎者側)</a></h2>
     </body>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Storage;
+
 
 class UserController extends Controller
 {
@@ -28,8 +30,20 @@ class UserController extends Controller
     
     public function update(Request $request, User $user)
     {
-        //dd($user);
+        //dd($request->file('image'));
+        $car_image = $request->file('car_image');
+        
         $input_user = $request['user'];
+        if(isset($car_image)){
+            $path = Storage::disk('s3')->putFile('myprefix', $car_image, 'public');
+        
+        //dd($path);
+        // アップロードした画像のフルパスを取得
+            $input_user['car_image_path'] = Storage::disk('s3')->url($path);
+        }else{
+            $input_user['car_image_path'] = null;
+        }
+        //dd($data['car_image_path']);
         $user->fill($input_user)->save();
         return redirect('/mypage');
     }
@@ -38,19 +52,4 @@ class UserController extends Controller
     {
         return view('allpage')->with(['user' => $user]);
     }
-    
-    /*public function create_car_image(Request $request)
-    {
-        $user= new User;
-        $form = $request->all();
-
-        //s3アップロード開始
-        $car_image = $request->file('car_image');
-        // バケットの`myprefix`フォルダへアップロード
-        $path = Storage::disk('s3')->putFile('myprefix', $car_image, 'public');
-        // アップロードした画像のフルパスを取得
-        $user->car_image_path = Storage::disk('s3')->url($path);
-
-        $user->save();
-    }*/
 }
