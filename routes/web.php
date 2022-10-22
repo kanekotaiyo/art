@@ -35,7 +35,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/pickupmessage/{matching}', 'ChatController@pickupmessage');
     Route::get('/review/{matching}', 'ReviewController@review');
     Route::put('/reviewing/{matching}', 'ReviewController@reviewing');
-    Route::post('/create_car_image', 'UserController@create_car_image');
 });
 
 Auth::routes();

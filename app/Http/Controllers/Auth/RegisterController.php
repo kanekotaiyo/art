@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Storage;
+
 
 class RegisterController extends Controller
 {
@@ -55,7 +57,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'car' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255'],
-            'car_image_path' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -67,6 +68,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //s3アップロード開始
+        //dd($car_image);
+        // バケットの`myprefix`フォルダへアップロード
+        if(array_key_exists('car_image', $data)){
+            $car_image = $data['car_image'];
+            $path = Storage::disk('s3')->putFile('myprefix', $car_image, 'public');
+        
+        //dd($path);
+        // アップロードした画像のフルパスを取得
+            $data['car_image_path'] = Storage::disk('s3')->url($path);
+        }else{
+            $data['car_image_path'] = null;
+        }
+        //dd($data['car_image_path']);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

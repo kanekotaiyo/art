@@ -12,22 +12,26 @@
     <body>
         <h1 class="title">プロフィール編集画面</h1>
         <div class="content">
-            <form action="/mypage/{{ $user->id }}" method="POST">
+            <form action="/mypage/{{ $user->id }}" method="POST" enctype='multipart/form-data'>
                 @csrf
                 @method('PUT')
                 <div class='name'>
                     <h2>名前</h2>
-                    <input type='text' name='user[name]' value="{{ $user->name }}">
+                    <input type='text' name='user[name]' value="{{ $user->name }}" />
                 </div>
                 <div class='car'>
                     <h2>車の特徴</h2>
-                    <input type='text' name='user[car]' value="{{ $user->car }}">
+                    <input type='text' name='user[car]' value="{{ $user->car }}" />
                 </div>
                 <div class='comment'>
                     <h2>コメント</h2>
-                    <input type='text' name='user[comment]' value="{{ $user->comment }}">
+                    <input type='text' name='user[comment]' value="{{ $user->comment }}" />
                 </div>
-                <input type="submit" value="保存">
+                <div class='car_image'>
+                    <h2>車の写真</h2>
+                    <input type="file" name='car_image' />
+                </div>
+                <input type="submit" value="保存" />
             </form>
             <br>
             <div class="footer">
