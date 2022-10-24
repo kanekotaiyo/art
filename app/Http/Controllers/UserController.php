@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -18,9 +19,12 @@ class UserController extends Controller
     public function mypage(User $user)
     {
         $user_id = Auth::id();
-        $user_info = $user->where("id", "$user_id")->first();
+        $user_info = $user->where("id", $user_id)->first();
+        $review=Review::where("Reviewed_id",$user_id);
+        $average=$review->avg('review');
+        //dd(round($review, 1));
         //dd($user_info);
-        return view('mypage')->with(['user' => $user_info]);
+        return view('mypage')->with(['user' => $user_info, 'reviews'=>$review, 'avg'=>round($average, 1)]);
     }
     
     public function edit(User $user)
@@ -50,6 +54,8 @@ class UserController extends Controller
     
     public function allpage(User $user)
     {
-        return view('allpage')->with(['user' => $user]);
+        $review=Review::where("Reviewed_id",$user->id);
+        $average=$review->avg('review');
+        return view('allpage')->with(['user' => $user, 'reviews'=>$review, 'avg'=>round($average, 1)]);
     }
 }
