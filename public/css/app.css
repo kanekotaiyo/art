@@ -584,6 +584,10 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+.header{
+  margin-left: 100px;
+  font-size: 20px;
+}
 
 @media (min-width: 576px) {
   .container-sm,
@@ -4562,7 +4566,7 @@ input[type=button].btn-block {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 25px;
   line-height: inherit;
   white-space: nowrap;
 }
