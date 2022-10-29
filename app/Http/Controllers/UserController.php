@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $user_id = Auth::id();
         $user_info = $user->where("id", $user_id)->first();
-        $review=Review::where("Reviewed_id",$user_id);
+        $review=Review::where("reviewed_id",$user_id);
         $average=$review->avg('review');
         //dd(round($review, 1));
         //dd($user_info);
