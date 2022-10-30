@@ -28,8 +28,8 @@
                     <input type='text' name='user[comment]' value="{{ $user->comment }}" />
                 </div>
                 <div class='car_image'>
-                    <h2>車の写真</h2>
-                    <input type="file" name='car_image' />
+                    <h2>写真</h2>
+                    <input type="file" name='image' />
                 </div>
                 <input type="submit" value="保存" />
             </form>
