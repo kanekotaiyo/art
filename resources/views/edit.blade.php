@@ -31,9 +31,10 @@
                     <h2>写真</h2>
                     <input type="file" name='image' />
                 </div>
+                <br/>
                 <input type="submit" value="保存" />
             </form>
-            <br>
+            <br/>
             <div class="footer">
                 <button type="button" onClick="history.back()">戻る</button>
             </div>
