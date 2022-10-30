@@ -21,10 +21,11 @@ class UserController extends Controller
         $user_id = Auth::id();
         $user_info = $user->where("id", $user_id)->first();
         $review=Review::where("reviewed_id",$user_id);
+        $count=count($review->get());
         $average=$review->avg('review');
         //dd(round($review, 1));
         //dd($user_info);
-        return view('mypage')->with(['user' => $user_info, 'reviews'=>$review, 'avg'=>round($average, 1)]);
+        return view('mypage')->with(['user' => $user_info, 'reviews'=>$review, 'count'=>$count, 'avg'=>round($average, 1)]);
     }
     
     public function edit(User $user)
@@ -55,7 +56,13 @@ class UserController extends Controller
     public function allpage(User $user)
     {
         $review=Review::where("Reviewed_id",$user->id);
+        $count=count($review->get());
         $average=$review->avg('review');
-        return view('allpage')->with(['user' => $user, 'reviews'=>$review, 'avg'=>round($average, 1)]);
+        return view('allpage')->with(['user' => $user, 'reviews'=>$review, 'count'=>$count, 'avg'=>round($average, 1)]);
+    }
+    
+    public function reviewcomment(User $user, Review $review)
+    {
+        return view('reviewcomment')->with(['reviews' => $review->getPaginateByLimit($user->id)]);
     }
 }

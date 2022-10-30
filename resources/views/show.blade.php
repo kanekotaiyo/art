@@ -14,14 +14,12 @@
     <body>
         <div class="plase">
             <div class="plase_reserve">
-                <h2>場所</h2>
-                <p>{{ $reserve->startplase }}から{{ $reserve->endplase }}</p>
+                <h1>場所：{{ $reserve->startplase }}から{{ $reserve->endplase }}</h1>
             </div>
         </div>
         <div class="time">
             <div class="time_reserve">
-                <h2>時間</h2>
-                <p>{{ $reserve->time }}</p>    
+                <h1>時間：{{ $reserve->time }}</h1>
             </div>
         </div>
         <h2><マッチング状況一覧></h2>
@@ -33,7 +31,7 @@
                     <h2>送迎者：{{ $matching->user->name }}</h2>
                     <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
                     <h2 class='chat'><a href="/reservechat/{{ $matching->id }}">チャット画面</a></h2>
-                    @if($reserve->time > $today && count($matching->reviews()->get())==0) {{--時間反対--}}
+                    @if($reserve->time < $today && count($matching->reviews()->get())==0) {{--時間反対--}}
                         <h2><a href="/review/{{$matching->id}}">レビューを書く</a></h2>
                     @endif
                     

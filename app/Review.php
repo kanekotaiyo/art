@@ -25,4 +25,9 @@ class Review extends Model
     {
         return $this->belongsTo('App\Matching');
     }
+    
+    public function getPaginateByLimit(int $user_id,int $limit_count = 10)
+    {
+        return $this->where("reviewed_id",$user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }

@@ -1,8 +1,4 @@
-.name{
-    font-size: 40px;
-}
-
-.myinformation{
+.box{
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #5d627b;
@@ -10,15 +6,7 @@
     border-top: solid 5px #5d627b;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-img {
-    width: 100px;
-    
-}
-.image{
-    float: right;
-    right: 100px;
-}
 span {
     display: inline-block;
-    width: 5em;
+    width: 4em;
 }
