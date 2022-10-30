@@ -77,12 +77,12 @@
                             </div>
                         </div>
                         <div>
-                            <label for="car_image" class="col-md-4 col-form-label text-md-right">車の写真</label>
-                            <input type="file" name="car_image">*2
+                            <label for="car_image" class="col-md-4 col-form-label text-md-right">プロフィール写真</label>
+                            <input type="file" name="image">*2
                             <br>
                             *1.コメントや車の特徴がなければ"なし"と書いてください
                             <br>
-                            *2.車の写真は登録しなくても大丈夫です
+                            *2.プロフィール写真は登録しなくても大丈夫です
                         </div>
 
                         <div class="form-group row mb-0">

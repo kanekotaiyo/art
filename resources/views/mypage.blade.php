@@ -15,8 +15,8 @@
         <div class="myinformation">
             <h2 class="name">名前：{{$user->name}}</h2>
             <div class="image">
-                @if ($user->car_image_path)
-                    <img src="{{ $user->car_image_path }}">
+                @if ($user->image_path)
+                    <img src="{{ $user->image_path }}">
                 @endif
             </div>
             <h2 class="car">

@@ -71,15 +71,15 @@ class RegisterController extends Controller
         //s3アップロード開始
         //dd($car_image);
         // バケットの`myprefix`フォルダへアップロード
-        if(array_key_exists('car_image', $data)){
-            $car_image = $data['car_image'];
-            $path = Storage::disk('s3')->putFile('myprefix', $car_image, 'public');
+        if(array_key_exists('image', $data)){
+            $image = $data['image'];
+            $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
         
         //dd($path);
         // アップロードした画像のフルパスを取得
-            $data['car_image_path'] = Storage::disk('s3')->url($path);
+            $data['image_path'] = Storage::disk('s3')->url($path);
         }else{
-            $data['car_image_path'] = null;
+            $data['image_path'] = null;
         }
         //dd($data['car_image_path']);
 
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'car' => $data['car'],
             'comment' => $data['comment'],
-            'car_image_path' => $data['car_image_path'],
+            'image_path' => $data['image_path'],
         ]);
     }
 }
