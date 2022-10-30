@@ -10,7 +10,7 @@ use App\Reserve;
 
 class Matching extends Model
 {
-    //use SoftDeletes;
+    use SoftDeletes;
     
     protected $fillable = [
         'reserve_id',

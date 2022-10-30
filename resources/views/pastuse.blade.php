@@ -7,12 +7,11 @@
         <meta charset="utf-8">
         <title>mypage</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/reserve.css') }}" rel="stylesheet">
     </head>
     <body>
         <h1>過去のマッチング（予約者側）</h1>
         @foreach ($reserves as $reserve)
-            <br>
             <div class='reserve'>
                 <h2 class='plase'>{{ $reserve->startplase }}から{{ $reserve->endplase }}</h2>
                 <h2 class='time'>{{ $reserve->time }}</h2>
@@ -25,7 +24,6 @@
         <div class='paginate'>
             {{ $reserves->links() }}
         </div>
-        <br>
         <div class="footer">
             <button type="button" onClick="history.back()">戻る</button>
         </div>

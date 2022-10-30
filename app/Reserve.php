@@ -8,7 +8,7 @@ use App\Matching;
 
 class Reserve extends Model
 {
-    //use SoftDeletes;
+    use SoftDeletes;
     
     protected $fillable = [
         'startplase',

@@ -8,8 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>myreserve_show</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
+        <link href="{{ asset('css/matching.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="plase">
@@ -25,28 +24,28 @@
         <h2><マッチング状況一覧></h2>
         <div class='reserve_confirm'>
             @foreach ($matchings as $matching)
-            <div class='reserve'>
                 @if($matching->confirmed ===1)
-                    <h2>[マッチング成立]</h2>
-                    <h2>送迎者：{{ $matching->user->name }}</h2>
-                    <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
-                    <h2 class='chat'><a href="/reservechat/{{ $matching->id }}">チャット画面</a></h2>
-                    @if($reserve->time < $today && count($matching->reviews()->get())==0) {{--時間反対--}}
-                        <h2><a href="/review/{{$matching->id}}">レビューを書く</a></h2>
-                    @endif
-                    
-                    <br>
+                    <div class='matching'>
+                        <h2>[マッチング成立]</h2>
+                        <h2>送迎者：{{ $matching->user->name }}</h2>
+                        <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                        <h2 class='chat'><a href="/reservechat/{{ $matching->id }}">チャット画面</a></h2>
+                        @if($reserve->time < $today && count($matching->reviews()->get())==0) {{--時間反対--}}
+                            <h2><a href="/review/{{$matching->id}}">レビューを書く</a></h2>
+                        @endif
+                    </div>
                 @endif
             @endforeach
             <div class='reserve_wait'>
             @if($reserve->time >= $today)
                 @foreach ($matchings as $matching)
-                <div class='reserve'>
                     @if($matching->confirmed ===0)
-                        <h2>送迎者：{{ $matching->user->name }}</h2>
-                        <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
-                        <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
-                        <br>
+                        <div class='matching'>
+                            <h2>送迎者：{{ $matching->user->name }}</h2>
+                            <h2><a href="/allpage/{{ $matching->user->id }}">プロフィール</a></h2>
+                            <h2><a href="/confirm/{{ $matching->id }}">マッチする</a></h2>
+                            <br>
+                        </div>
                     @endif
                 @endforeach
             @else
@@ -57,7 +56,7 @@
             {{ $matchings->links() }}
         </div>
         <div class="footer">
-            <a href="/myreserve">[予約状況画面へ]</a>
+            <h2><a href="/myreserve">[予約状況画面へ]</a></h2>
         </div>
     </body>
 </html>

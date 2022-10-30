@@ -1,0 +1,46 @@
+.chat{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.send {
+position: relative;
+background-color: #b6fcd9;
+padding: 10px;
+color: #333;
+width: 90%;
+}
+
+.send::before {
+content: "";
+position: absolute;
+border: 12px solid transparent;
+border-left: 12px solid #b6fcd9;
+top: 20%;
+left: 100%;
+}
+
+.recieve {
+position: relative;
+background-color: #b2affa;
+padding: 10px;
+color: #333;
+margin: 15px;
+}
+
+.recieve::before {
+content: "";
+position: absolute;
+border: 12px solid transparent;
+border-right: 12px solid #b2affa;
+top: 20%;
+left: -24px;
+}
+
+img {
+    width: 50px;
+    
+}

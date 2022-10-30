@@ -10,7 +10,6 @@
     </head>
     <body>
         <h1 class="page-title">レビューコメント一覧</h1>
-        <br/>
         <div class='reviews'>
             @foreach ($reviews as $review)
                 <div class="box">

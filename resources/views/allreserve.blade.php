@@ -7,10 +7,10 @@
         <meta charset="utf-8">
         <title>Blog</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/reserve.css') }}" rel="stylesheet">
     </head>
     <body>
-        <h1>みんなの予約</h1>
+        <h1>みんなの予約画面</h1>
         <h2><a href="/matchlist">マッチング申請リスト</a></h2>
         <div class='reserves'>
             @foreach ($reserves as $reserve)
@@ -21,7 +21,6 @@
                     <h2 class='title'>
                         <a href="/matching/{{ $reserve->id }}">マッチを申請する</a>
                     </h2>
-                    <br>
                 </div>
             @endforeach
         </div>

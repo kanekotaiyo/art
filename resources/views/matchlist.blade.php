@@ -7,21 +7,22 @@
         <meta charset="utf-8">
         <title>matchlist</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/matching.css') }}" rel="stylesheet">
     </head>
     <body>
         <h1>マッチング申請リスト</h1>
         <div class='reserve_confirm'>
             <h2>[マッチング成立]</h2>
             @foreach ($matchings as $matching)
-            <div class='reserve'>
+            <div class='matchings'>
                 @if($matching->confirmed ===1 && $matching->reserve->allfinish!=1)
-                    <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
-                    <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
-                    <h2 class='time'>{{ $matching->reserve->time }}</h2>
-                    <h2 class='chat'><a href="/pickupchat/{{ $matching->id }}">チャット画面</a></h2>
-                    </form>
-                    <br>
+                    <div class='matching'>
+                        <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
+                        <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
+                        <h2 class='time'>{{ $matching->reserve->time }}</h2>
+                        <h2 class='chat'><a href="/pickupchat/{{ $matching->id }}">チャット画面</a></h2>
+                        </form>
+                    </div>
                 @endif
             @endforeach
             <div class='reserve_wait'>
@@ -29,16 +30,16 @@
             @foreach ($matchings as $matching)
             <div class='reserve'>
                 @if($matching->confirmed ===0)
-                    <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
-                    <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
-                    <h2 class='time'>{{ $matching->reserve->time }}</h2>
-                    <form action="/matchlist/{{ $matching->id }}" id="form_{{ $matching->id }}" method="post" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">delete</button> 
-                    </form>
-                    <br>
-                    <br>
+                    <div class='matching'>
+                        <h2 class='name'>予約者：<a href="/allpage/{{ $matching->reserve->user->id }}">{{ $matching->reserve->user->name }}</a></h2>
+                        <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
+                        <h2 class='time'>{{ $matching->reserve->time }}</h2>
+                        <form action="/matchlist/{{ $matching->id }}" id="form_{{ $matching->id }}" method="post" style="display:inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">delete</button> 
+                        </form>
+                    </div>
                 @endif
             @endforeach
         </div>

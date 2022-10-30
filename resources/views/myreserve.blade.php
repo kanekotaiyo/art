@@ -7,15 +7,14 @@
         <meta charset="utf-8">
         <title>myreserve</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/reserve.css') }}" rel="stylesheet">
     </head>
     <body>
         <h1>予約状況画面</h1>
-        [<a href='/create'>新しく予約する</a>]
+        <h2>[<a href='/create'>新しく予約する</a>]</h2>
         <div class='reserves'>
             @foreach ($reserves as $reserve)
                 @if ($reserve->allfinish!=1)
-                    <br>
                     <div class='reserve'>
                         <h2 class='plase'>{{ $reserve->startplase }}から{{ $reserve->endplase }}</h2>
                         <h2 class='time'>{{ $reserve->time }}</h2>

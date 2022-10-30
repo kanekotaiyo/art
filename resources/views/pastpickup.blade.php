@@ -7,13 +7,12 @@
         <meta charset="utf-8">
         <title>mypage</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/matching.css') }}" rel="stylesheet">
     </head>
     <body>
         <h1>過去のマッチング（送迎者側）</h1>
         @foreach ($matchings as $matching)
-            <br>
-            <div class='reserve'>
+            <div class='matching'>
                 <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
                 <h2 class='time'>{{ $matching->reserve->time }}</h2>
                 <h2>予約者：{{ $matching->reserve->user->name }}</h2>
@@ -23,7 +22,6 @@
         <div class='paginate'>
             {{ $matchings->links() }}
         </div>
-        <br>
         <div class="footer">
             <button type="button" onClick="history.back()">戻る</button>
         </div>
