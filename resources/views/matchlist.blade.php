@@ -42,6 +42,9 @@
                 @endif
             @endforeach
         </div>
+        <div class='paginate'>
+            {{ $matchings->links() }}
+        </div>
         <br>
         <button type="button" onClick="history.back()">戻る</button>
     </body>

@@ -53,6 +53,9 @@
                 <h2>予約時刻は過ぎていますのでマッチングが確定しているもの以外表示できません</h2>
             @endif
         </div>
+        <div class='paginate'>
+            {{ $matchings->links() }}
+        </div>
         <div class="footer">
             <a href="/myreserve">[予約状況画面へ]</a>
         </div>

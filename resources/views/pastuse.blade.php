@@ -22,6 +22,9 @@
                 @endforeach
             </div>
         @endforeach
+        <div class='paginate'>
+            {{ $reserves->links() }}
+        </div>
         <br>
         <div class="footer">
             <button type="button" onClick="history.back()">戻る</button>

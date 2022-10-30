@@ -20,6 +20,9 @@
                 <h2><a href="/allpage/{{ $matching->reserve->user->id }}">プロフィール</a></h2>
             </div>
         @endforeach
+        <div class='paginate'>
+            {{ $matchings->links() }}
+        </div>
         <br>
         <div class="footer">
             <button type="button" onClick="history.back()">戻る</button>
