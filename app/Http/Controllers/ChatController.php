@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ChatRequest;
 use App\Chat;
 use App\Matching;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,7 @@ class ChatController extends Controller
             return redirect('/matchlist');
         }
     }
-    public function pickupmessage(Request $request, Chat $chat, Matching $matching)
+    public function pickupmessage(ChatRequest $request, Chat $chat, Matching $matching)
     {
         $input = $request['chat'];
         $input['from_id'] = Auth::id();

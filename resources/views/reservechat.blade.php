@@ -37,15 +37,16 @@
                     @endif
                 @endforeach
             </div>
+            <br/>
+            <form action="/reservemessage/{{ $matching->id }}" method="POST">
+                @csrf
+                <div class="message">
+                    <input type="text" size="50" name="chat[message]" />
+                    <p class="message__error" style="color:red">{{ $errors->first('chat.message') }}</p>
+                </div>
+                <input type="submit" value="送信"/>
+            </form>
         </div>
-        <form action="/reservemessage/{{ $matching->id }}" method="POST">
-            @csrf
-            <div class="message">
-                <input type="text" size="50" name="chat[message]" />
-            </div>
-            <input type="submit" value="送信"/>
-        </form>
-        <br>
         <div class="footer">
             <h2><a href="/myreserve/{{ $matching->reserve->id }}">[マッチング状況一覧へ]</a></h2>
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Review;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Storage;
 
@@ -33,7 +34,7 @@ class UserController extends Controller
         return view('edit')->with(['user' => $user]);
     }
     
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         //dd($request->file('image'));
         
@@ -50,6 +51,13 @@ class UserController extends Controller
         $user->fill($input_user)->save();
         return redirect('/mypage');
     }
+    
+    /*public function imagedelete(Request $request, User $user)
+    {
+        $input_user = $request['user'];
+        $input_user['image_path'] = null;
+        $user->fill($input_user)->save();
+    }*/
     
     public function allpage(User $user)
     {

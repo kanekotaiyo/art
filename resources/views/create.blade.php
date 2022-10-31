@@ -16,6 +16,8 @@
                 <div class="plase">
                     <h2>場所</h2>
                     <input type="text" name="reserve[startplase]" placeholder="東京駅"/>から<input type="text" name="reserve[endplase]" placeholder="渋谷駅"/>
+                    <p class="startplase__error" style="color:red">{{ $errors->first('reserve.startplase') }}</p>
+                    <p class="endplase__error" style="color:red">{{ $errors->first('reserve.endplase') }}</p>
                 </div>
                 <br/>
                 <div class="time">
@@ -24,6 +26,7 @@
                     <input type="datetime-local" id="time"
                         name="reserve[time]" value="{{ \Carbon\Carbon::today() }}"
                         min="{{ \Carbon\Carbon::today() }}" max="2300-12-31T00:00">
+                    <p class="time__error" style="color:red">{{ $errors->first('reserve.time') }}</p>
                 </div>
                 <input type="submit" value="保存"/>
             </div>

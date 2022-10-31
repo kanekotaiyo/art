@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reserve;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReserveRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ReserveController extends Controller
@@ -18,7 +19,7 @@ class ReserveController extends Controller
         return view('create');
     }
   
-    public function store(Request $request, Reserve $reserve)
+    public function store(ReserveRequest $request, Reserve $reserve)
     {
         $input = $request['reserve'];
         $input['user_id'] = Auth::id();
