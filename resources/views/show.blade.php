@@ -32,7 +32,10 @@
                         <h2 class='chat'><a href="/reservechat/{{ $matching->id }}">チャット画面</a></h2>
                         @if($reserve->time < $today && count($matching->reviews()->get())==0) {{--時間反対--}}
                             <h2><a href="/review/{{$matching->id}}">レビューを書く</a></h2>
+                            *レビューを送信することでマッチング終了となります。
                         @endif
+                        <br/>
+                        *予約時間から一日後にこの画面は見れなくなります。
                     </div>
                 @endif
             @endforeach
