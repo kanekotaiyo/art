@@ -21,6 +21,7 @@
                         <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
                         <h2 class='time'>{{ $matching->reserve->time }}</h2>
                         <h2 class='chat'><a href="/pickupchat/{{ $matching->id }}">チャット画面</a></h2>
+                        *マッチング相手がレビューを書くまたは予約時間から一日経つとこの画面は見れなくなります。
                         </form>
                     </div>
                 @endif

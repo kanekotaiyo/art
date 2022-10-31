@@ -30,15 +30,15 @@
                 </div>
                 <p class="review__error" style="color:red">{{ $errors->first('review.review') }}</p>
                 <h3>コメント</h3>
-                <input type="text" name="review[comment]"/>
+                <input type="text" size="50" name="review[comment]"/>
                 <p class="comment__error" style="color:red">{{ $errors->first('review.comment') }}</p>
+                *評価とコメントは必ず入れてください。<br/>
+                *コメントがなければ"なし"と書いてください。<br/>
+                *レビューを送信することでマッチング終了となります。<br/>
+                *レビューを送信すると予約状況画面から見れなくなりマイページの過去のマッチングに移動します。
+                <br>
+                <input type="submit" value="送信"/>
             </div>
-            *評価とコメントは必ず入れてください。<br/>
-            *コメントがなければ"なし"と書いてください。<br/>
-            *レビューを送信することでマッチング終了となります。<br/>
-            *レビューを送信すると予約状況画面から見れなくなりマイページの過去のマッチングに移動します。
-            <br>
-            <input type="submit" value="送信"/>
         </form>
         <br>
         <button type="button" onClick="history.back()">戻る</button>
