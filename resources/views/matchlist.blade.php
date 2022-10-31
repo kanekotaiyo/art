@@ -47,7 +47,9 @@
             {{ $matchings->links() }}
         </div>
         <br>
-        <button type="button" onClick="history.back()">戻る</button>
+        <div class="footer">
+            <h2><a href="/allreserve">[みんなの予約画面へ]</a></h2>
+        </div>
     </body>
 </html>
 @endsection

@@ -16,25 +16,27 @@
             <h2 class='name'>送迎者：<a href="/allpage/{{ $matching->user->id }}">{{ $matching->user->name }}</a></h2>
             <h2 class='plase'>{{ $matching->reserve->startplase }}から{{ $matching->reserve->endplase }}</h2>
             <h2 class='time'>{{ $matching->reserve->time }}</h2>
-            @foreach ($chats as $chat)
-                @if($chat->from_id===Auth::id())
-                    <div class='image' style="text-align: right">
-                        <h3>{{ $chat->fromUser->name }}</h3>
-                        <img src="{{ $chat->fromUser->image_path }}">
-                    </div>
-                    <div class='send' style="text-align: right">
-                        <h2>{{ $chat->message }}</h2>
-                    </div>
-                @else
-                    <div class='image' style="text-align: right">
-                        <img src="{{ $chat->fromUser->image_path }}">
-                        <h3>{{ $chat->fromUser->name }}</h3>
-                    </div>
-                    <div class='recieve' style="text-align: left">
-                        <h2>{{ $chat->message }}</h2>
-                    </div>
-                @endif
-            @endforeach
+            <div class="scroll">
+                @foreach ($chats as $chat)
+                    @if($chat->from_id===Auth::id())
+                        <div class='image' style="text-align: right">
+                            <h3>{{ $chat->fromUser->name }}</h3>
+                            <img src="{{ $chat->fromUser->image_path }}">
+                        </div>
+                        <div class='send'>
+                            <h2>{{ $chat->message }}</h2>
+                        </div>
+                    @else
+                        <div class='image' style="text-align: left">
+                            <h3>{{ $chat->fromUser->name }}</h3>
+                            <img src="{{ $chat->fromUser->image_path }}">
+                        </div>
+                        <div class='recieve'>
+                            <h2>{{ $chat->message }}</h2>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
         </div>
         <form action="/reservemessage/{{ $matching->id }}" method="POST">
             @csrf
@@ -45,7 +47,7 @@
         </form>
         <br>
         <div class="footer">
-            <a href="/myreserve/{{ $matching->reserve->id }}">[マッチング状況一覧へ]</a>
+            <h2><a href="/myreserve/{{ $matching->reserve->id }}">[マッチング状況一覧へ]</a></h2>
         </div>
     </body>
 </html>

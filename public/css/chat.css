@@ -44,3 +44,9 @@ img {
     width: 50px;
     
 }
+
+.scroll{
+    height: 400px;
+    overflow: scroll;
+    background-color: #fffaf0;
+}
