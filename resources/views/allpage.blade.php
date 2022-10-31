@@ -10,8 +10,7 @@
         <link href="{{ asset('css/mypage.css') }}" rel="stylesheet">
     </head>
     <body>
-        <h1 class="page-title">マイページ画面</h1>
-        <h2 class="edit">[<a href="/mypage/{{ $user->id }}/edit">編集</a>]</h2>
+        <h1 class="page-title">プロフィール画面</h1>
         <div class="myinformation">
             <h2 class="name">名前：{{$user->name}}</h2>
             <div class="image">
