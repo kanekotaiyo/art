@@ -18,6 +18,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/past_use_pickup', 'MatchingController@past_use_pickup');
     Route::get('/mypage/{user}/edit', 'UserController@edit');
     Route::put('/mypage/{user}', 'UserController@update');
+    Route::put('/imagedelete/{user}', 'UserController@imagedelete');
     Route::get('/allpage/{user}', 'UserController@allpage');
     Route::get('/reviewcomment/{user}', 'UserController@reviewcomment');
     Route::get('/myreserve', 'ReserveController@myreserve');
