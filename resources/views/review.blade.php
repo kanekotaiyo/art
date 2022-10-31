@@ -28,17 +28,17 @@
                     <input id="star1" type="radio" name="review[review]" value="1">
                     <label for="star1">★</label>
                 </div>
-                @if ($errors->has('name'))
-                    <li>{{$errors->first('name')}}</li>
-                @endif
+                <p class="review__error" style="color:red">{{ $errors->first('review.review') }}</p>
                 <h3>コメント</h3>
                 <input type="text" name="review[comment]"/>
-                @if ($errors->has('name'))
-                    <li>{{$errors->first('name')}}</li>
-                @endif
+                <p class="comment__error" style="color:red">{{ $errors->first('review.comment') }}</p>
             </div>
+            *評価とコメントは必ず入れてください。<br/>
+            *コメントがなければ"なし"と書いてください。<br/>
+            *レビューを送信することでマッチング終了となります。<br/>
+            *レビューを送信すると予約状況画面から見れなくなりマイページの過去のマッチングに移動します。
             <br>
-            <input type="submit" value="保存"/>
+            <input type="submit" value="送信"/>
         </form>
         <br>
         <button type="button" onClick="history.back()">戻る</button>
