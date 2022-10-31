@@ -36,17 +36,15 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //dd($request->file('image'));
-        $image = $request->file('image');
         
         $input_user = $request['user'];
-        if(isset($image)){
+        if($request->file('image')){
+            $image = $request->file('image');
             $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
         
         //dd($path);
         // アップロードした画像のフルパスを取得
             $input_user['image_path'] = Storage::disk('s3')->url($path);
-        }else{
-            $input_user['image_path'] = null;
         }
         //dd($data['car_image_path']);
         $user->fill($input_user)->save();

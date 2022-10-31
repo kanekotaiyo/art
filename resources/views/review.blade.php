@@ -28,8 +28,14 @@
                     <input id="star1" type="radio" name="review[review]" value="1">
                     <label for="star1">★</label>
                 </div>
+                @if ($errors->has('name'))
+                    <li>{{$errors->first('name')}}</li>
+                @endif
                 <h3>コメント</h3>
                 <input type="text" name="review[comment]"/>
+                @if ($errors->has('name'))
+                    <li>{{$errors->first('name')}}</li>
+                @endif
             </div>
             <br>
             <input type="submit" value="保存"/>
