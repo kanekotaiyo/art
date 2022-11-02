@@ -21,3 +21,8 @@ body {
     overflow: scroll;
     background-color: #fffaf0;
 }
+
+.font{
+    color:red ;
+    font-weight:bold;
+}
