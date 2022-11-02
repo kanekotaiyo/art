@@ -14,3 +14,10 @@ body {
     font-family: 'Cherry Swash', cursive;
     color: #330033;
 }
+
+.scroll{
+    height: 200px;
+    width: 400px;
+    overflow: scroll;
+    background-color: #fffaf0;
+}
