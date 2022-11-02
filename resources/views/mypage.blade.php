@@ -11,7 +11,8 @@
     </head>
     <body>
         <h1 class="page-title">マイページ画面</h1>
-        <h2 class="edit">[<a href="/mypage/{{ $user->id }}/edit">編集</a>]</h2>
+        <h2 class="edit">[<a href="/mypage/{{ $user->id }}/edit">プロフィール編集</a>]</h2>
+        <h2 class="image_edit">[<a href="/mypage/{{ $user->id }}/image_edit">プロフィール写真変更</a>]</h2>
         <div class="myinformation">
             <h2 class="name">名前：{{$user->name}}</h2>
             <div class="image">

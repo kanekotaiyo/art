@@ -30,10 +30,6 @@
                     <input type='text' size="50" name='user[comment]' value="{{ $user->comment }}" />
                     <p class="comment__error" style="color:red">{{ $errors->first('user.comment') }}</p>
                 </div>
-                <div class='car_image'>
-                    <h2>プロフィール写真</h2>
-                    <input type="file" name='image' />
-                </div>
                 <br/>
                 <input type="submit" value="保存" />
             </form>
