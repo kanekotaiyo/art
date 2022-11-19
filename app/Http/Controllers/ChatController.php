@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
+    //予約者側のチャット画面に移動
     public function reservechat(Matching $matching, Chat $chat)
     {
         $matching_id=$matching->id;
-        //dd($matching);
-        //dd($reserve_id);
         $user_id=Auth::id();
         if ($matching->reserve->user_id==$user_id){
             return view('reservechat')->with(['matching' => $matching, 'chats' => $chat->getPaginateByLimitChat($matching_id)]);
@@ -22,6 +21,8 @@ class ChatController extends Controller
             return redirect('/myreserve');
         }
     }
+    
+    //予約者側のチャットを送信しchatテーブルに格納
     public function reservemessage(Request $request, Chat $chat, Matching $matching)
     {
         $input = $request['chat'];
@@ -32,6 +33,7 @@ class ChatController extends Controller
         return redirect('/reservechat/' . $matching->id);
     }
     
+    //送迎者側のチャット画面に移動
     public function pickupchat(Matching $matching, Chat $chat)
     {
         $matching_id=$matching->id;
@@ -44,6 +46,8 @@ class ChatController extends Controller
             return redirect('/matchlist');
         }
     }
+    
+    //送迎者側のチャットを送信しchatテーブルに格納
     public function pickupmessage(ChatRequest $request, Chat $chat, Matching $matching)
     {
         $input = $request['chat'];

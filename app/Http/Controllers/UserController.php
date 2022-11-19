@@ -12,11 +12,14 @@ use Storage;
 
 class UserController extends Controller
 {
+    
+    //topページへの移動
     public function top()
     {
         return view('top');
     }
     
+    //ログイン中のマイページへ移動
     public function mypage(User $user)
     {
         $user_id = Auth::id();
@@ -24,59 +27,44 @@ class UserController extends Controller
         $review=Review::where("reviewed_id",$user_id);
         $count=count($review->get());
         $average=$review->avg('review');
-        //dd(round($review, 1));
-        //dd($user_info);
         return view('mypage')->with(['user' => $user_info, 'reviews'=>$review, 'count'=>$count, 'avg'=>round($average, 1)]);
     }
     
+    //プロフィール編集画面へ移動
     public function edit(User $user)
     {
         return view('edit')->with(['user' => $user]);
     }
     
+    //プロフィール写真変更へ移動
     public function image_edit(User $user)
     {
         return view('imageedit')->with(['user' => $user]);
     }
     
+    //プロフィールの変更をしてマイページへ
     public function update(UserRequest $request, User $user)
     {
-        //dd($request->file('image'));
-        
         $input_user = $request['user'];
-        
-        //dd($data['car_image_path']);
         $user->fill($input_user)->save();
         return redirect('/mypage');
     }
+    
+    //プロフィール写真を変更してマイページへ
     public function update_image(Request $request, User $user)
     {
-        //dd($request->file('image'));
-        //$input_user['name'] = $user->name;
-        //$input_user['car'] = $user->car;
-        //$input_user['comment'] = $user->comment;
         if($request->file('image')){
             $image = $request->file('image');
             $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
-        
-        //dd($path);
-        // アップロードした画像のフルパスを取得
             $input_user['image_path'] = Storage::disk('s3')->url($path);
         }else{
             $input_user['image_path'] = null;
         }
-        //dd($input_user);
         $user->fill($input_user)->save();
         return redirect('/mypage');
     }
     
-    /*public function imagedelete(Request $request, User $user)
-    {
-        $input_user = $request['user'];
-        $input_user['image_path'] = null;
-        $user->fill($input_user)->save();
-    }*/
-    
+    //他の人のプロフィール画面に移動
     public function allpage(User $user)
     {
         $review=Review::where("Reviewed_id",$user->id);
@@ -85,6 +73,7 @@ class UserController extends Controller
         return view('allpage')->with(['user' => $user, 'reviews'=>$review, 'count'=>$count, 'avg'=>round($average, 1)]);
     }
     
+    //レビューコメント一覧に移動
     public function reviewcomment(User $user, Review $review)
     {
         return view('reviewcomment')->with(['reviews' => $review->getPaginateByLimit($user->id)]);
