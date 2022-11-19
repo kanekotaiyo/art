@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class MatchingController extends Controller
 {
+    //マッチングを申請しmatchingテーブルに格納
     public function matching(Reserve $reserve, Matching $matching)
     {
         $user_id=Auth::id();
         $is_matching=$matching->where('reserve_id', $reserve->id)->where('user_id',$user_id)->first();
-        //dd($is_matching);
         if(isset($is_matching)){
             return redirect('/matchlist');
         }else{
@@ -28,26 +28,17 @@ class MatchingController extends Controller
         }
     }
     
+    //マッチング申請リストに移動
     public function matchlist(Matching $matching)
     {
-        /*$is_matching=$matching->where('confirmed', 1)->select('reserve_id')->get();
-        //dd($is_matching);
-        $is_matching_reserve=$matching->where('reserve_id',$is_matching)->get();
-        dd($is_matching_reserve);
-        if(isset($is_matching)){
-            return redirect('/matchlist');
-        }*/
         return view('matchlist')->with(['matchings' => $matching->getPaginateByLimitMatchlist(Auth::id())]);
     }
     
+    //マッチング状況に移動
     public function show(Reserve $reserve, Matching $matching)
     {
-        //$a=Matching::find(22);
-        //dd(count($a->reviews()->get()));
-        //dd($matching->get());
         $today = date("Y-m-d H:i:s");
         $reserve_id=$reserve->id;
-        //dd($reserve_id);
         $user_id=Auth::id();
         if ($reserve->user_id==$user_id){
             return view('show')->with(['matchings' => $matching->getPaginateByLimitShow($reserve_id), 'reserve' => $reserve, 'today' => $today]);
@@ -56,6 +47,7 @@ class MatchingController extends Controller
         }
     }
     
+    //マッチングを予約者側が確定させる
     public function matching_confirm(Reserve $reserve, Matching $matching)
     {
         $input=[
@@ -66,26 +58,25 @@ class MatchingController extends Controller
         return redirect('/myreserve/' . $matching->reserve->id);
     }
     
+    //予約を削除する
     public function delete_reserve(Reserve $reserve, Matching $matching)
     {
         $de_matching=$matching->where('reserve_id',$reserve->id)->first();
-        //dd($de_matching);
         $de_matching->delete();
-        //dd($de_matching);
         $reserve->delete();
         return redirect('/myreserve');
     }
     
+    //マッチングを削除する
     public function delete_matching(Matching $matching)
     {
         $matching->delete();
         return redirect('/matchlist');
     }
     
+    //過去のマッチング（送迎者側）へ移動
     public function past_use_pickup(Matching $matching)
     {
-        //dd($reserve->matchings()->get());
-        //dd($reserves);
         return view('pastpickup')->with(['matchings' => $matching->getPaginateByLimitPastPickup(Auth::id())]);
     }
     
